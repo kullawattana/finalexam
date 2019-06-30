@@ -29,9 +29,7 @@ type Customer struct {
 }
 
 func getCustomers(c *gin.Context) {
-	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
-	db, err := sql.Open("postgres", url)
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -55,9 +53,7 @@ func getCustomers(c *gin.Context) {
 }
 
 func postCustomers(c *gin.Context) {
-	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
-	db, err := sql.Open("postgres", url)
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -100,9 +96,7 @@ func getCustomersByID(c *gin.Context) {
 }
 
 func updateCustomersByID(c *gin.Context) {
-	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
-	db, err := sql.Open("postgres", url)
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
