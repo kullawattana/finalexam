@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
@@ -28,9 +29,9 @@ type Customer struct {
 }
 
 func getCustomers(c *gin.Context) {
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
 	db, err := sql.Open("postgres", url)
+	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -54,7 +55,9 @@ func getCustomers(c *gin.Context) {
 }
 
 func postCustomers(c *gin.Context) {
-	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
+	db, err := sql.Open("postgres", url)
+	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -97,9 +100,9 @@ func getCustomersByID(c *gin.Context) {
 }
 
 func updateCustomersByID(c *gin.Context) {
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
 	db, err := sql.Open("postgres", url)
+	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -107,19 +110,34 @@ func updateCustomersByID(c *gin.Context) {
 
 	var customer Customer
 	c.BindJSON(&customer)
-	query := `UPDATE customer SET name=$2, email=$3, status=$4 WHERE id=$1;`
-	stmt, err := db.Prepare(query)
+
+	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 
-	rows := stmt.QueryRow(query, customer.Name, customer.Email, customer.Status)
-	err = rows.Scan(&customer.ID, &customer.Name, &customer.Email, &customer.Status)
+	customer.ID = id
+	err = updateTodo(db, id, customer.Name, customer.Email, customer.Status)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 
 	c.JSON(http.StatusOK, customer)
+}
+
+func updateTodo(db *sql.DB, id int, name string, email string, status string) error {
+	stmt, err := db.Prepare("UPDATE customer SET name=$2, email=$3, status=$4 WHERE id=$1;")
+	if err != nil {
+		return err
+	}
+
+	if _, err := stmt.Exec(id, name, email, status); err != nil {
+		return err
+	}
+
+	return err
 }
 
 func deleteCustomersByID(c *gin.Context) {
