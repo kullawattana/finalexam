@@ -4,14 +4,15 @@ import (
 	"database/sql"
 	"net/http"
 
+	"os"
+
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
-	"os"
 )
 
 func main() {
 	r := gin.Default()
-	r.Use(authMiddleware)
+	//r.Use(authMiddleware)
 	r.GET("/customers", getCustomers)
 	r.GET("/customers/:id", getCustomersByID)
 	r.POST("/customers/", postCustomers)
@@ -30,11 +31,13 @@ type Customer struct {
 func getCustomers(c *gin.Context) {
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "not connect"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
+	defer db.Close()
+
 	stmt, err := db.Prepare("SELECT id, name, email, status FROM customer")
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "not query data"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 	rows, _ := stmt.Query()
 	customers := []Customer{}
@@ -42,7 +45,7 @@ func getCustomers(c *gin.Context) {
 		cus := Customer{}
 		err := rows.Scan(&cus.ID, &cus.Name, &cus.Email, &cus.Status)
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "not data"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		}
 		customers = append(customers, cus)
 	}
@@ -50,21 +53,16 @@ func getCustomers(c *gin.Context) {
 }
 
 func postCustomers(c *gin.Context) {
-	url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	db, err := sql.Open("postgres", url)
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "not connect"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
-
-	name := "top"
-	email := "suttipong.kull@gmail.com"
-	status := "inactive"
+	defer db.Close()
 
 	var customer Customer
 	c.BindJSON(&customer)
 	query := `INSERT INTO customer (name, email, status) VALUES ($1, $2, $3) RETURNING ID, name, email, status`
-	row := db.QueryRow(query, name, email, status)
+	row := db.QueryRow(query, customer.Name, customer.Email, customer.Status)
 
 	err = row.Scan(&customer.ID, &customer.Name, &customer.Email, &customer.Status)
 	if err != nil {
@@ -72,7 +70,7 @@ func postCustomers(c *gin.Context) {
 		return
 	}
 
-	c.JSON(201, customer)
+	c.JSON(http.StatusAccepted, customer)
 }
 
 func getCustomersByID(c *gin.Context) {
@@ -80,8 +78,9 @@ func getCustomersByID(c *gin.Context) {
 	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	db, err := sql.Open("postgres", url)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "not connect"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
+	defer db.Close()
 
 	stmt, err := db.Prepare("SELECT id, name, email, status FROM customer WHERE id=$1;")
 	if err != nil {
@@ -89,7 +88,7 @@ func getCustomersByID(c *gin.Context) {
 	}
 
 	var customer Customer
-	rows := stmt.QueryRow(1)
+	rows := stmt.QueryRow("id")
 	err = rows.Scan(&customer.ID, &customer.Name, &customer.Email, &customer.Status)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -103,11 +102,11 @@ func updateCustomersByID(c *gin.Context) {
 	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	db, err := sql.Open("postgres", url)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "not connect"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
+	defer db.Close()
 
 	var customer Customer
-
 	c.BindJSON(&customer)
 
 	name := "suttipong"
@@ -135,8 +134,9 @@ func deleteCustomersByID(c *gin.Context) {
 	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	db, err := sql.Open("postgres", url)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "not connect"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
+	defer db.Close()
 
 	query := `DELETE FROM customer WHERE id=$1 RETURNING ID, name, email, status;`
 	stmt, err := db.Prepare(query)
