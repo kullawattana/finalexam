@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
+	"os"
 )
 
 func main() {
@@ -27,8 +28,7 @@ type Customer struct {
 }
 
 func getCustomers(c *gin.Context) {
-	url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
-	db, err := sql.Open("postgres", url)
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "not connect"})
 	}
