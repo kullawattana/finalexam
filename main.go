@@ -12,7 +12,7 @@ import (
 
 func main() {
 	r := gin.Default()
-	//r.Use(authMiddleware)
+	r.Use(authMiddleware)
 	r.GET("/customers", getCustomers)
 	r.GET("/customers/:id", getCustomersByID)
 	r.POST("/customers/", postCustomers)
