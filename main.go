@@ -3,7 +3,6 @@ package main
 import (
 	"database/sql"
 	"net/http"
-
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -29,7 +28,9 @@ type Customer struct {
 }
 
 func getCustomers(c *gin.Context) {
-	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
+	db, err := sql.Open("postgres", url)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -49,7 +50,7 @@ func getCustomers(c *gin.Context) {
 		}
 		customers = append(customers, cus)
 	}
-	c.JSON(200, customers)
+	c.JSON(http.StatusOK, customers)
 }
 
 func postCustomers(c *gin.Context) {
@@ -74,9 +75,7 @@ func postCustomers(c *gin.Context) {
 }
 
 func getCustomersByID(c *gin.Context) {
-	url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	db, err := sql.Open("postgres", url)
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -88,18 +87,18 @@ func getCustomersByID(c *gin.Context) {
 	}
 
 	var customer Customer
-	rows := stmt.QueryRow("id")
+	rows := stmt.QueryRow(c.Param("id"))
 	err = rows.Scan(&customer.ID, &customer.Name, &customer.Email, &customer.Status)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 
-	c.JSON(200, customer)
+	c.JSON(http.StatusOK, customer)
 }
 
 func updateCustomersByID(c *gin.Context) {
-	url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
 	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	url := "postgres://auriwacs:ZHFxnZyO99adFwMurc3w0JxaQcaAmc3P@satao.db.elephantsql.com:5432/auriwacs"
 	db, err := sql.Open("postgres", url)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -108,31 +107,23 @@ func updateCustomersByID(c *gin.Context) {
 
 	var customer Customer
 	c.BindJSON(&customer)
-
-	name := "suttipong"
-	email := "suttipong.kull@gmail.com"
-	status := "active"
-
 	query := `UPDATE customer SET name=$2, email=$3, status=$4 WHERE id=$1;`
 	stmt, err := db.Prepare(query)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 
-	rows := stmt.QueryRow(query, name, email, status)
+	rows := stmt.QueryRow(query, customer.Name, customer.Email, customer.Status)
 	err = rows.Scan(&customer.ID, &customer.Name, &customer.Email, &customer.Status)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 
-	//customer.ID = id
-	c.JSON(200, customer)
+	c.JSON(http.StatusOK, customer)
 }
 
 func deleteCustomersByID(c *gin.Context) {
-	url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
-	//db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	db, err := sql.Open("postgres", url)
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
@@ -145,18 +136,18 @@ func deleteCustomersByID(c *gin.Context) {
 	}
 
 	var customer Customer
-	rows := stmt.QueryRow(1)
+	rows := stmt.QueryRow(c.Param("id"))
 	err = rows.Scan(&customer.ID, &customer.Name, &customer.Email, &customer.Status)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 
-	c.JSON(200, gin.H{"message": "customer deleted"})
+	c.JSON(http.StatusOK, gin.H{"message": "customer deleted"})
 }
 
 func authMiddleware(c *gin.Context) {
 	token := c.GetHeader("Authorization")
-	if token != "Bearer token123" {
+	if token != "token123" {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": http.StatusText(http.StatusUnauthorized)})
 		c.Abort()
 		return
