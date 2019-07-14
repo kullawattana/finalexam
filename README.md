@@ -281,10 +281,13 @@ On branch master
  create mode 100644 go.mod \
  create mode 100644 go.sum \
  create mode 100644 main.go
-# Toppees-MacBook-Pro:school toppee$ 
+ 
+## Toppees-MacBook-Pro:school toppee$ 
 nothing added to commit but untracked files present (use "git add" to track)
-# Toppees-MacBook-Pro:school toppee$ git remote add origin https://github.com/kullawattana/school.git
-# Toppees-MacBook-Pro:school toppee$ git push -u origin master \
+
+## $ git remote add origin https://github.com/kullawattana/school.git
+
+## $ git push -u origin master \
 Enumerating objects: 5, done. \
 Counting objects: 100% (5/5), done. \
 Delta compression using up to 8 threads \
@@ -293,18 +296,18 @@ Writing objects: 100% (5/5), 3.13 KiB | 3.13 MiB/s, done. \
 Total 5 (delta 0), reused 0 (delta 0) \
 To https://github.com/kullawattana/school.git \
  * [new branch]      master -> master \
-Branch 'master' set up to track remote branch 'master' from 'origin'. \
+Branch 'master' set up to track remote branch 'master' from 'origin'. 
 
-## Build 
-# $ go build -o school .
-# $ go build . 
-# $ ./school-service
+# Build 
+## $ go build -o school .
+## $ go build . 
+## $ ./school-service
 
-## RUN !!!
-# $ go env
-# $ GOOS=windows GOARCH=amd64 go build -o school.exe .
+# RUN !!!
+## $ go env
+## $ GOOS=windows GOARCH=amd64 go build -o school.exe .
 
-## Code Convention
+# Code Convention
 
 - how to call function by writing big character name of method  (public)
 - Static Language 
