@@ -1,4 +1,4 @@
-# GO WORKSHOP
+# GO Programming 2019 (WORKSHOP at KBTG)
 
 # Run Go
 ## $ go run main.go
