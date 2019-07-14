@@ -223,7 +223,7 @@ OK
 
 ## Unit Test
 _test \
-*testing.t \
+*testing.t 
 
 --------------------------------------------------
 #Toppees-MacBook-Pro:school-service-master toppee$ go run main.go
@@ -247,16 +247,18 @@ token :Bearer token123 \
 [{1 Homework active} {2 Homework Inactive} {3 Homework Inactive}] \
 Ending \
 
-[GIN] 2019/06/29 - 10:36:03 | 200 |  1.106725518s |             ::1 | GET      /api/todos \
+[GIN] 2019/06/29 - 10:36:03 | 200 |  1.106725518s |             ::1 | GET      /api/todos 
 
 ——————————————————————————————————————————————————
 ## Commit
 
-# Toppees-MacBook-Pro:school toppee$ ls
+# $ ls
 go.mod  go.sum  main.go
-# Toppees-MacBook-Pro:school toppee$ git init
+
+# $ git init
 Initialized empty Git repository in /Users/toppee/Desktop/Github Workspace/KBTG-workshop-Go-Programming-2019/school/.git/
-# Toppees-MacBook-Pro:school toppee$ git status
+
+# $ git status
 On branch master
 
 No commits yet
@@ -270,14 +272,14 @@ Untracked files:
         main.go
 
 nothing added to commit but untracked files present (use "git add" to track)
-# Toppees-MacBook-Pro:school toppee$ git add main.go go.sum go.mod
-# Toppees-MacBook-Pro:school toppee$ git status
+# $ git add main.go go.sum go.mod
+# $ git status
 On branch master
 # Toppees-MacBook-Pro:school toppee$ git commit -m "first commit"
-[master (root-commit) 854819c] first commit
- 3 files changed, 161 insertions(+)
- create mode 100644 go.mod
- create mode 100644 go.sum
+[master (root-commit) 854819c] first commit \
+ 3 files changed, 161 insertions(+) \
+ create mode 100644 go.mod \
+ create mode 100644 go.sum \
  create mode 100644 main.go
 # Toppees-MacBook-Pro:school toppee$ 
 nothing added to commit but untracked files present (use "git add" to track)
@@ -292,18 +294,15 @@ Total 5 (delta 0), reused 0 (delta 0) \
 To https://github.com/kullawattana/school.git \
  * [new branch]      master -> master \
 Branch 'master' set up to track remote branch 'master' from 'origin'. \
-# Toppees-MacBook-Pro:school toppee$ 
 
----------------------------------------
 ## Build 
-# Toppees-MacBook-Pro:school-service-master toppee$ go build -o school .
-# Toppees-MacBook-Pro:school-service-master toppee$ go build . 
-# Toppees-MacBook-Pro:school-service-master toppee$ ./school-service
+# $ go build -o school .
+# $ go build . 
+# $ ./school-service
 
 ## RUN !!!
-# Toppees-MacBook-Pro:school-service-master toppee$ go env
-# Toppees-MacBook-Pro:school-service-master toppee$ GOOS=windows GOARCH=amd64 go build -o school.exe .
----------------------------------------
+# $ go env
+# $ GOOS=windows GOARCH=amd64 go build -o school.exe .
 
 ## Code Convention
 
@@ -311,7 +310,7 @@ Branch 'master' set up to track remote branch 'master' from 'origin'. \
 - Static Language 
 - Dynamic Language
 - ฟังก์ชั่นที่ขึ้นต้นด้วย test เป็น Code Convension ที่ใช้กับ testcase
-- จัด format go fmt ใช่ swap.go
+- จัด format go fmt use swap.go
 
 ```go
 pingHandler := func(c *gin.Context) {
