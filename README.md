@@ -187,8 +187,6 @@ go: extracting gopkg.in/go-playground/assert.v1 v1.2.1
 # Postgres
 - url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
 # Database : https://github.com/lib/pq
-## go mod init github.com/suttipong/postgres
-
 ## $ go mod init github.com/suttipong/postgres
 go: creating new go.mod: module github.com/suttipong/postgres
 
@@ -221,11 +219,11 @@ _test \
 
 --------------------------------------------------
 #Toppees-MacBook-Pro:school-service-master toppee$ go run main.go
-[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. \
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached. 
 
-[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production. \
- - using env:   export GIN_MODE=release \
- - using code:  gin.SetMode(gin.ReleaseMode) \
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production. 
+ - using env:   export GIN_MODE=release 
+ - using code:  gin.SetMode(gin.ReleaseMode) 
 
 [GIN-debug] GET    /api/todos                --> github.com/..../school-service/service.GetTodos (4 handlers)\
 [GIN-debug] GET    /api/todos/:id            --> github.com/..../school-service/service.GetTodosById (4 handlers)\
@@ -239,7 +237,7 @@ No Port In Heroku1234 \
 Hello from middleware \
 token :Bearer token123 \
 [{1 Homework active} {2 Homework Inactive} {3 Homework Inactive}] \
-Ending \
+Ending 
 
 [GIN] 2019/06/29 - 10:36:03 | 200 |  1.106725518s |             ::1 | GET      /api/todos 
 
@@ -274,8 +272,6 @@ On branch master
  create mode 100644 go.mod \
  create mode 100644 go.sum \
  create mode 100644 main.go
- 
-## Toppees-MacBook-Pro:school toppee$ 
 nothing added to commit but untracked files present (use "git add" to track)
 
 ## $ git remote add origin https://github.com/kullawattana/school.git
