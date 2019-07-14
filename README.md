@@ -1,38 +1,38 @@
 # GO WORKSHOP
 
 ## Run Go
-#Toppees-MacBook-Pro:labgo toppee$ go run main.go
+# Toppees-MacBook-Pro:labgo toppee$ go run main.go
 
-- 1. Postman (latest vesion https://www.getpostman.com/downloads/)
-- 2. git (latest version https://git-scm.com/downloads)
-- 3. vscode (latest version https://code.visualstudio.com/download)
-- 4. vscode xtension (https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)
-- 5. GOROOT ใน enviroment variable (https://golang.org/dl/)
+- Postman (latest vesion https://www.getpostman.com/downloads/)
+- git (latest version https://git-scm.com/downloads)
+- vscode (latest version https://code.visualstudio.com/download)
+- vscode xtension (https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)
+- GOROOT ใน enviroment variable (https://golang.org/dl/)
 
-#Gin Go Command
+# Gin Go Command
 - go mod init
 - go env
 - go mod init https://github.com/kullawattana/school
 - go mod tidy
 - echo $GOPATH
 
-#Set port
+# Set port
 - PORT=1234 go run main.go
 
-#Run
+# Run
 - go run main.go
 
 ## Gin Go Install
 
-#Toppees-MacBook-Pro:school toppee$ go mod init
+# Toppees-MacBook-Pro:school toppee$ go mod init
 go: cannot determine module path for source directory /Users/toppee/Desktop/school (outside GOPATH, no import comments)
 
-#Toppees-MacBook-Pro:school toppee$ go run main.go
+# Toppees-MacBook-Pro:school toppee$ go run main.go
 main.go:3:8: cannot find package "github.com/gin-gonic/gin" in any of:
         /usr/local/go/src/github.com/gin-gonic/gin (from $GOROOT)
         /Users/toppee/go/src/github.com/gin-gonic/gin (from $GOPATH)
 
-#Toppees-MacBook-Pro:school toppee$ go env
+# Toppees-MacBook-Pro:school toppee$ go env
 GOARCH="amd64"
 GOBIN=""
 GOCACHE="/Users/toppee/Library/Caches/go-build"
@@ -60,10 +60,10 @@ CGO_LDFLAGS="-g -O2"
 PKG_CONFIG="pkg-config"
 GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/bj/0q111_8s7fjbh8mfjfvyhpdh0000gn/T/go-build613639050=/tmp/go-build -gno-record-gcc-switches -fno-common"
 
-#Toppees-MacBook-Pro:school toppee$ go mod init https://github.com/kullawattana/school
+# Toppees-MacBook-Pro:school toppee$ go mod init https://github.com/kullawattana/school
 go: creating new go.mod: module https://github.com/kullawattana/school
 
-#Toppees-MacBook-Pro:school toppee$ go mod tidy
+# Toppees-MacBook-Pro:school toppee$ go mod tidy
 go: finding github.com/gin-gonic/gin v1.4.0
 go: downloading github.com/gin-gonic/gin v1.4.0
 go: extracting github.com/gin-gonic/gin v1.4.0
@@ -94,7 +94,7 @@ go: golang.org/x/sys@v0.0.0-20190222072716-a9d3bda3a223: git fetch -f origin ref
         fatal: index-pack failed
 go: golang.org/x/sys@v0.0.0-20190215142949-d0b11bdaac8a: unknown revision d0b11bdaac8a
 go: error loading module requirements
-#Toppees-MacBook-Pro:school toppee$ go $GOPATH
+# Toppees-MacBook-Pro:school toppee$ go $GOPATH
 Go is a tool for managing Go source code.
 
 Usage:
@@ -144,12 +144,12 @@ Additional help topics:
 Use "go help <topic>" for more information about that topic.
 
 —————————————————————————————————
-#Toppees-MacBook-Pro:school toppee$ go %GOPATH
+# Toppees-MacBook-Pro:school toppee$ go %GOPATH
 go %GOPATH: unknown command
 Run 'go help' for usage.
 
 —————————————————————————————————
-#Toppees-MacBook-Pro:school toppee$ go mod tidy
+# Toppees-MacBook-Pro:school toppee$ go mod tidy
 go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a
 go: finding golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223
 go: downloading github.com/gin-contrib/sse v0.0.0-20190301062529-5545eab6dad3
@@ -186,26 +186,26 @@ go: extracting gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
 go: extracting gopkg.in/go-playground/assert.v1 v1.2.1
 
 —————————————————————————————————
-##Postgres
+## Postgres
 - url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
 
 ===========================
-#Database : https://github.com/lib/pq
+# Database : https://github.com/lib/pq
 ===========================
 
-#go mod init github.com/suttipong/postgres
+# go mod init github.com/suttipong/postgres
 
-#Toppees-MacBook-Pro:database toppee$ go mod init github.com/suttipong/postgres
+# Toppees-MacBook-Pro:database toppee$ go mod init github.com/suttipong/postgres
 go: creating new go.mod: module github.com/suttipong/postgres
 #Toppees-MacBook-Pro:database toppee$ go mod tiny
 go mod tiny: unknown command
 Run 'go help mod' for usage.
-#Toppees-MacBook-Pro:database toppee$ go run postgres.go
+# Toppees-MacBook-Pro:database toppee$ go run postgres.go
 go: finding github.com/lib/pq v1.1.1
 go: downloading github.com/lib/pq v1.1.1
 go: extracting github.com/lib/pq v1.1.1
 OK
-#Toppees-MacBook-Pro:database toppee$ 
+# Toppees-MacBook-Pro:database toppee$ 
 
 - SET DATABASE_URL = “postgres://dfpsncgm:ZvvFpVgiPUz5xo25lRmoQS1Rf41uzrQo@satao.db.elephantsql.com:5432/dfpsncgm” go run insert.go
 
@@ -250,11 +250,11 @@ Ending
 ——————————————————————————————————————————————————
 ## Commit
 
-#Toppees-MacBook-Pro:school toppee$ ls
+# Toppees-MacBook-Pro:school toppee$ ls
 go.mod  go.sum  main.go
-#Toppees-MacBook-Pro:school toppee$ git init
+# Toppees-MacBook-Pro:school toppee$ git init
 Initialized empty Git repository in /Users/toppee/Desktop/Github Workspace/KBTG-workshop-Go-Programming-2019/school/.git/
-#Toppees-MacBook-Pro:school toppee$ git status
+# Toppees-MacBook-Pro:school toppee$ git status
 On branch master
 
 No commits yet
@@ -268,39 +268,39 @@ Untracked files:
         main.go
 
 nothing added to commit but untracked files present (use "git add" to track)
-#Toppees-MacBook-Pro:school toppee$ git add main.go go.sum go.mod
-#Toppees-MacBook-Pro:school toppee$ git status
+# Toppees-MacBook-Pro:school toppee$ git add main.go go.sum go.mod
+# Toppees-MacBook-Pro:school toppee$ git status
 On branch master
-#Toppees-MacBook-Pro:school toppee$ git commit -m "first commit"
+# Toppees-MacBook-Pro:school toppee$ git commit -m "first commit"
 [master (root-commit) 854819c] first commit
  3 files changed, 161 insertions(+)
  create mode 100644 go.mod
  create mode 100644 go.sum
  create mode 100644 main.go
-#Toppees-MacBook-Pro:school toppee$ 
+# Toppees-MacBook-Pro:school toppee$ 
 nothing added to commit but untracked files present (use "git add" to track)
-#Toppees-MacBook-Pro:school toppee$ git remote add origin https://github.com/kullawattana/school.git
-#Toppees-MacBook-Pro:school toppee$ git push -u origin master
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 3.13 KiB | 3.13 MiB/s, done.
-Total 5 (delta 0), reused 0 (delta 0)
-To https://github.com/kullawattana/school.git
- * [new branch]      master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
-#Toppees-MacBook-Pro:school toppee$ 
+# Toppees-MacBook-Pro:school toppee$ git remote add origin https://github.com/kullawattana/school.git
+# Toppees-MacBook-Pro:school toppee$ git push -u origin master \
+Enumerating objects: 5, done. \
+Counting objects: 100% (5/5), done. \
+Delta compression using up to 8 threads \
+Compressing objects: 100% (5/5), done. \
+Writing objects: 100% (5/5), 3.13 KiB | 3.13 MiB/s, done. \
+Total 5 (delta 0), reused 0 (delta 0) \
+To https://github.com/kullawattana/school.git \
+ * [new branch]      master -> master \
+Branch 'master' set up to track remote branch 'master' from 'origin'. \
+# Toppees-MacBook-Pro:school toppee$ 
 
 ---------------------------------------
 ## Build 
-#Toppees-MacBook-Pro:school-service-master toppee$ go build -o school .
-#Toppees-MacBook-Pro:school-service-master toppee$ go build . 
-#Toppees-MacBook-Pro:school-service-master toppee$ ./school-service
+# Toppees-MacBook-Pro:school-service-master toppee$ go build -o school .
+# Toppees-MacBook-Pro:school-service-master toppee$ go build . 
+# Toppees-MacBook-Pro:school-service-master toppee$ ./school-service
 
 ## RUN !!!
-#Toppees-MacBook-Pro:school-service-master toppee$ go env
-#Toppees-MacBook-Pro:school-service-master toppee$ GOOS=windows GOARCH=amd64 go build -o school.exe .
+# Toppees-MacBook-Pro:school-service-master toppee$ go env
+# Toppees-MacBook-Pro:school-service-master toppee$ GOOS=windows GOARCH=amd64 go build -o school.exe .
 ---------------------------------------
 
 ## Code Convention
@@ -311,6 +311,7 @@ Branch 'master' set up to track remote branch 'master' from 'origin'.
 - ฟังก์ชั่นที่ขึ้นต้นด้วย test เป็น Code Convension ที่ใช้กับ testcase
 - จัด format go fmt ใช่ swap.go
 
+```go
 pingHandler := func(c *gin.Context) {
         c.JSON(200, gin.H{
             "message": "pong",
@@ -324,3 +325,4 @@ ss := map[string]Student{
 response = map[string]interface{}{
         "message": "success",
 }
+```
