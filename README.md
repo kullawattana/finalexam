@@ -1,7 +1,7 @@
 # GO WORKSHOP
 
 # Run Go
-## Toppees-MacBook-Pro:labgo toppee$ go run main.go
+## $ go run main.go
 
 - Postman (latest vesion https://www.getpostman.com/downloads/)
 - git (latest version https://git-scm.com/downloads)
@@ -24,15 +24,15 @@
 
 # Gin Go Install
 
-## Toppees-MacBook-Pro:school toppee$ go mod init
+## $ go mod init
 go: cannot determine module path for source directory /Users/toppee/Desktop/school (outside GOPATH, no import comments)
 
-## Toppees-MacBook-Pro:school toppee$ go run main.go
+## $ go run main.go
 main.go:3:8: cannot find package "github.com/gin-gonic/gin" in any of:
         /usr/local/go/src/github.com/gin-gonic/gin (from $GOROOT)
         /Users/toppee/go/src/github.com/gin-gonic/gin (from $GOPATH)
 
-## Toppees-MacBook-Pro:school toppee$ go env
+## $ go env
 GOARCH="amd64" \
 GOBIN="" \
 GOCACHE="/Users/toppee/Library/Caches/go-build" \
@@ -58,12 +58,12 @@ CGO_CXXFLAGS="-g -O2" \
 CGO_FFLAGS="-g -O2" \
 CGO_LDFLAGS="-g -O2" \
 PKG_CONFIG="pkg-config" \
-GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/bj/0q111_8s7fjbh8mfjfvyhpdh0000gn/T/go-build613639050=/tmp/go-build -gno-record-gcc-switches -fno-common" \
+GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/bj/0q111_8s7fjbh8mfjfvyhpdh0000gn/T/go-build613639050=/tmp/go-build -gno-record-gcc-switches -fno-common" 
 
-## Toppees-MacBook-Pro:school toppee$ go mod init https://github.com/kullawattana/school
+## $ go mod init https://github.com/kullawattana/school
 go: creating new go.mod: module https://github.com/kullawattana/school
 
-## Toppees-MacBook-Pro:school toppee$ go mod tidy
+## $ go mod tidy
 go: finding github.com/gin-gonic/gin v1.4.0 \
 go: downloading github.com/gin-gonic/gin v1.4.0 \
 go: extracting github.com/gin-gonic/gin v1.4.0 \
@@ -93,8 +93,9 @@ go: golang.org/x/sys@v0.0.0-20190222072716-a9d3bda3a223: git fetch -f origin ref
         fatal: early EOF \
         fatal: index-pack failed \
 go: golang.org/x/sys@v0.0.0-20190215142949-d0b11bdaac8a: unknown revision d0b11bdaac8a \
-go: error loading module requirements \
-## Toppees-MacBook-Pro:school toppee$ go $GOPATH
+go: error loading module requirements 
+
+## $ go $GOPATH
 Go is a tool for managing Go source code.
 
 ## Usage:
@@ -144,12 +145,12 @@ Go is a tool for managing Go source code.
 ## Use "go help <topic>" for more information about that topic.
 
 —————————————————————————————————
-## Toppees-MacBook-Pro:school toppee$ go %GOPATH
+## $ go %GOPATH
 go %GOPATH: unknown command \
-Run 'go help' for usage. \
+Run 'go help' for usage. 
 
 —————————————————————————————————
-# Toppees-MacBook-Pro:school toppee$ go mod tidy
+# $ go mod tidy
 go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a \
 go: finding golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223 \
 go: downloading github.com/gin-contrib/sse v0.0.0-20190301062529-5545eab6dad3 \
@@ -183,7 +184,7 @@ go: downloading gopkg.in/go-playground/assert.v1 v1.2.1 \
 go: extracting gopkg.in/yaml.v2 v2.2.2 \
 go: downloading gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 \
 go: extracting gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 \
-go: extracting gopkg.in/go-playground/assert.v1 v1.2.1 \
+go: extracting gopkg.in/go-playground/assert.v1 v1.2.1 
 
 —————————————————————————————————
 # Postgres
@@ -194,23 +195,24 @@ go: extracting gopkg.in/go-playground/assert.v1 v1.2.1 \
 ## go mod init github.com/suttipong/postgres
 ===========================
 
-## Toppees-MacBook-Pro:database toppee$ go mod init github.com/suttipong/postgres
+## $ go mod init github.com/suttipong/postgres
 go: creating new go.mod: module github.com/suttipong/postgres
-#Toppees-MacBook-Pro:database toppee$ go mod tiny
-go mod tiny: unknown command
+
+## $ go mod tiny
+go mod tiny: unknown command \
 Run 'go help mod' for usage.
-## Toppees-MacBook-Pro:database toppee$ go run postgres.go
-go: finding github.com/lib/pq v1.1.1
-go: downloading github.com/lib/pq v1.1.1
-go: extracting github.com/lib/pq v1.1.1
+
+## $ go run postgres.go
+go: finding github.com/lib/pq v1.1.1 \
+go: downloading github.com/lib/pq v1.1.1 \
+go: extracting github.com/lib/pq v1.1.1 \
 OK
-## Toppees-MacBook-Pro:database toppee$ 
 
 - SET DATABASE_URL = “postgres://dfpsncgm:ZvvFpVgiPUz5xo25lRmoQS1Rf41uzrQo@satao.db.elephantsql.com:5432/dfpsncgm” go run insert.go 
 
 # REST SERVICE
 - Command + shift + P (Setup Plugin)
-——————————————————————————————————————————————————
+
 ```go
 "go.alternateTools": {
         "go-langserver": []
@@ -218,7 +220,6 @@ OK
 "go.languageServerFlags": [],
 "go.useLanguageServer": false
 ```
-——————————————————————————————————————————————————
 
 ## Unit Test
 _test \
