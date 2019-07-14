@@ -144,12 +144,10 @@ Go is a tool for managing Go source code.
 
 ## Use "go help <topic>" for more information about that topic.
 
-—————————————————————————————————
 ## $ go %GOPATH
 go %GOPATH: unknown command \
 Run 'go help' for usage. 
 
-—————————————————————————————————
 # $ go mod tidy
 go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a \
 go: finding golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223 \
@@ -186,14 +184,10 @@ go: downloading gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 \
 go: extracting gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 \
 go: extracting gopkg.in/go-playground/assert.v1 v1.2.1 
 
-—————————————————————————————————
 # Postgres
 - url := "postgres://fqwnvlfk:lv3nDmkzmBXgk6dup77dO6CbsjcJa2-L@satao.db.elephantsql.com:5432/fqwnvlfk"
-
-===========================
 # Database : https://github.com/lib/pq
 ## go mod init github.com/suttipong/postgres
-===========================
 
 ## $ go mod init github.com/suttipong/postgres
 go: creating new go.mod: module github.com/suttipong/postgres
@@ -221,7 +215,7 @@ OK
 "go.useLanguageServer": false
 ```
 
-## Unit Test
+# Unit Test
 _test \
 *testing.t 
 
@@ -249,16 +243,15 @@ Ending \
 
 [GIN] 2019/06/29 - 10:36:03 | 200 |  1.106725518s |             ::1 | GET      /api/todos 
 
-——————————————————————————————————————————————————
-## Commit
+# Commit
 
-# $ ls
+## $ ls
 go.mod  go.sum  main.go
 
-# $ git init
+## $ git init
 Initialized empty Git repository in /Users/toppee/Desktop/Github Workspace/KBTG-workshop-Go-Programming-2019/school/.git/
 
-# $ git status
+## $ git status
 On branch master
 
 No commits yet
@@ -272,10 +265,10 @@ Untracked files:
         main.go
 
 nothing added to commit but untracked files present (use "git add" to track)
-# $ git add main.go go.sum go.mod
-# $ git status
+## $ git add main.go go.sum go.mod
+## $ git status
 On branch master
-# Toppees-MacBook-Pro:school toppee$ git commit -m "first commit"
+## $ git commit -m "first commit"
 [master (root-commit) 854819c] first commit \
  3 files changed, 161 insertions(+) \
  create mode 100644 go.mod \
@@ -287,7 +280,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ## $ git remote add origin https://github.com/kullawattana/school.git
 
-## $ git push -u origin master \
+## $ git push -u origin master 
+
 Enumerating objects: 5, done. \
 Counting objects: 100% (5/5), done. \
 Delta compression using up to 8 threads \
